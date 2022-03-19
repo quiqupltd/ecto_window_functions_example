@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+  postgres.db:
+    image: bitnami/postgresql:14
+    ports:
+      - '5432:5432'
+    volumes:
+      - pg-data:/bitnami/postgresql
+      - ./scripts:/scripts
+    environment:
+      POSTGRESQL_PASSWORD: password
+      PGPASSWORD: password
+      POSTGRESQL_DATABASE: test_app_dev
+
+volumes:
+  pg-data:
