@@ -7,6 +7,6 @@ config :test_app, TestApp.Repo,
   database: "test_app_dev",
   username: "postgres",
   password: "password",
-  hostname: "localhost",
+  hostname: "localhost"
 
 import_config "#{config_env()}.exs"
