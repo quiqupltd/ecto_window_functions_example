@@ -1,4 +1,6 @@
 defmodule TestApp.Groups do
+  import Ecto.Query
+
   alias TestApp.Repo
   alias TestApp.Groups.Group
 
@@ -15,5 +17,38 @@ defmodule TestApp.Groups do
   end
 
   def list_groups(region \\ nil, search \\ nil) do
+    query =
+      from(g in Group)
+      |> filter_region(region)
+      |> add_rank(region)
+      |> search(search)
+
+    query |> Repo.all()
+  end
+
+  defp filter_region(query, nil), do: query
+
+  defp filter_region(query, region) do
+    from(g in query, where: g.region == ^region)
+  end
+
+  defp add_rank(query, nil) do
+    from(g in query,
+      windows: [p: [partition_by: nil, order_by: [desc: g.score]]],
+      select_merge: %{group_rank: row_number() |> over(:p)}
+    )
+  end
+
+  defp add_rank(query, _region) do
+    from(g in query,
+      windows: [p: [partition_by: g.region, order_by: [desc: g.score]]],
+      select_merge: %{group_rank: row_number() |> over(:p)}
+    )
+  end
+
+  defp search(query, nil), do: query
+
+  defp search(query, search) do
+    from(g in subquery(query), where: ilike(g.name, ^"%#{search}%"))
   end
 end

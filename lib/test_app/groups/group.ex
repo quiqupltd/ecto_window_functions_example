@@ -8,7 +8,7 @@ defmodule TestApp.Groups.Group do
     field(:score, :integer, null: false)
 
     # Has to be virtual!
-    field(:rank, :integer, virtual: true)
+    field(:group_rank, :integer, virtual: true)
   end
 
   def changeset(group, attrs) do

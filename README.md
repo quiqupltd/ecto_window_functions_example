@@ -41,52 +41,53 @@ When presenting this data, I also want to be able to show a rank element, and de
 
 | Rank | Name       | Region | Score |
 | ---- | ---------- | ------ | ----- |
-| 1    | UK Group 1 | UK     | 8     |
-| 2    | AE Group 1 | UAE    | 10    |
-| 3    | UK Group 2 | UK     | 30    |
-| 4    | AE Group 2 | UAE    | 30    |
-| 5    | AE Group 3 | UAE    | 35    |
-| 6    | UK Group 3 | UK     | 38    |
-| 7    | AE Group 4 | UAE    | 50    |
-| 8    | UK Group 4 | UK     | 52    |
+| 1    | UK Group 4 | UK     | 52    |
+| 2    | AE Group 4 | UAE    | 50    |
+| 3    | UK Group 3 | UK     | 38    |
+| 4    | AE Group 3 | UAE    | 35    |
+| 5    | AE Group 2 | UAE    | 30    |
+| 6    | UK Group 2 | UK     | 30    |
+| 7    | AE Group 1 | UAE    | 10    |
+| 8    | UK Group 1 | UK     | 8     |
 
 **When filtering for UK:**
 
 | Rank | Name       | Region | Score |
 | ---- | ---------- | ------ | ----- |
-| 1    | UK Group 1 | UK     | 8     |
-| 2    | UK Group 2 | UK     | 30    |
-| 3    | UK Group 3 | UK     | 38    |
-| 4    | UK Group 4 | UK     | 52    |
+| 1    | UK Group 4 | UK     | 52    |
+| 2    | UK Group 3 | UK     | 38    |
+| 3    | UK Group 2 | UK     | 30    |
+| 4    | UK Group 1 | UK     | 8     |
 
 **When filtering for UAE:**
 
 | Rank | Name       | Region | Score |
 | ---- | ---------- | ------ | ----- |
-| 1    | AE Group 1 | UAE    | 10    |
-| 2    | AE Group 2 | UAE    | 30    |
-| 3    | AE Group 3 | UAE    | 35    |
-| 4    | AE Group 4 | UAE    | 50    |
+| 1    | AE Group 4 | UAE    | 50    |
+| 2    | AE Group 3 | UAE    | 35    |
+| 3    | AE Group 2 | UAE    | 30    |
+| 4    | AE Group 1 | UAE    | 10    |
 
 Finally when searching a name, I want to be able to show the position based on the original pre-searched results
 
-**Filter: "UAE", Search: "AE Group 4"**
+**Filter: "UAE", Search: "Group 4"**
 
 | Rank | Name       | Region | Score |
 | ---- | ---------- | ------ | ----- |
-| 4    | AE Group 4 | UAE    | 50    |
+| 1    | AE Group 4 | UAE    | 50    |
 
-**Filter: "UK", Search: "UK Group 2"**
-
-| Rank | Name       | Region | Score |
-| ---- | ---------- | ------ | ----- |
-| 2    | UK Group 2 | UK     | 30    |
-
-**Filter: "All", Search: "UK Group 2"**
+**Filter: "UK", Search: "Group 3"**
 
 | Rank | Name       | Region | Score |
 | ---- | ---------- | ------ | ----- |
-| 3    | UK Group 2 | UK     | 30    |
+| 2    | UK Group 3 | UK     | 38    |
+
+**Filter: "All", Search: "Group 3"**
+
+| Rank | Name       | Region | Score |
+| ---- | ---------- | ------ | ----- |
+| 3    | UK Group 3 | UK     | 38    |
+| 4    | AE Group 3 | UAE    | 35    |
 
 ## Solution
 
