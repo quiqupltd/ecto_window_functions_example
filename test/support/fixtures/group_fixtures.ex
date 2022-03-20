@@ -1,6 +1,6 @@
 defmodule TestApp.GroupFixtures do
   @doc """
-  Generate a user.
+  Generate groups.
   """
   def group_fixtures() do
     [
