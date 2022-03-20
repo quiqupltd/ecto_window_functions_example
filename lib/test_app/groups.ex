@@ -32,6 +32,7 @@ defmodule TestApp.Groups do
     from(g in query, where: g.region == ^region)
   end
 
+  # When no region is past we don't need to partition, we have global rank
   defp add_rank(query, nil) do
     from(g in query,
       windows: [p: [partition_by: nil, order_by: [desc: g.score]]],
@@ -39,6 +40,7 @@ defmodule TestApp.Groups do
     )
   end
 
+  # When a region is passed we should partition by the region to establish a rank in each region
   defp add_rank(query, _region) do
     from(g in query,
       windows: [p: [partition_by: g.region, order_by: [desc: g.score]]],
@@ -48,6 +50,7 @@ defmodule TestApp.Groups do
 
   defp search(query, nil), do: query
 
+  # Make sure to use a subquery to we don't lose the correct ordering
   defp search(query, search) do
     from(g in subquery(query), where: ilike(g.name, ^"%#{search}%"))
   end
